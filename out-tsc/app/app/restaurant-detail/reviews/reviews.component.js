@@ -10,27 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 import { Component } from '@angular/core';
 import { RestaurantsServices } from '../../restaurants/restaurants.services';
 import { ActivatedRoute } from '@angular/router';
-var MenuComponent = (function () {
-    function MenuComponent(restaurantsServices, routes) {
+var ReviewsComponent = (function () {
+    function ReviewsComponent(restaurantsServices, routes) {
         this.restaurantsServices = restaurantsServices;
         this.routes = routes;
     }
-    MenuComponent.prototype.ngOnInit = function () {
-        this.menu = this.restaurantsServices
-            .menuOfRestaurant(this.routes.parent.snapshot.params['id']);
+    ReviewsComponent.prototype.ngOnInit = function () {
+        this.reviews = this.restaurantsServices
+            .reviewsOfRestaurant(this.routes.parent.snapshot.params['id']);
     };
-    MenuComponent.prototype.addMenuItem = function (item) {
-        console.log(item);
-    };
-    return MenuComponent;
+    return ReviewsComponent;
 }());
-MenuComponent = __decorate([
+ReviewsComponent = __decorate([
     Component({
-        selector: 'mt-menu',
-        templateUrl: './menu.component.html'
+        selector: 'mt-reviews',
+        templateUrl: './reviews.component.html'
     }),
     __metadata("design:paramtypes", [RestaurantsServices,
         ActivatedRoute])
-], MenuComponent);
-export { MenuComponent };
-//# sourceMappingURL=menu.component.js.map
+], ReviewsComponent);
+export { ReviewsComponent };
+//# sourceMappingURL=reviews.component.js.map

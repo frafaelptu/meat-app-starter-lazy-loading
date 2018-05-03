@@ -17,6 +17,7 @@ var RestaurantsServices = (function () {
     function RestaurantsServices(http) {
         this.http = http;
     }
+    ;
     RestaurantsServices.prototype.restaurants = function () {
         return this.http.get(MEAT_API + "/restaurants")
             .map(function (response) { return response.json(); })
@@ -24,6 +25,16 @@ var RestaurantsServices = (function () {
     };
     RestaurantsServices.prototype.restaurantById = function (id) {
         return this.http.get(MEAT_API + "/restaurants/" + id)
+            .map(function (response) { return response.json(); })
+            .catch(ErrorHandler.handleError);
+    };
+    RestaurantsServices.prototype.reviewsOfRestaurant = function (id) {
+        return this.http.get(MEAT_API + "/restaurants/" + id + "/reviews")
+            .map(function (response) { return response.json(); })
+            .catch(ErrorHandler.handleError);
+    };
+    RestaurantsServices.prototype.menuOfRestaurant = function (id) {
+        return this.http.get(MEAT_API + "/restaurants/" + id + "/menu")
             .map(function (response) { return response.json(); })
             .catch(ErrorHandler.handleError);
     };
