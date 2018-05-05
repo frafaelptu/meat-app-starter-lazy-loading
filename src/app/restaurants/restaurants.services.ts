@@ -44,7 +44,6 @@ export class RestaurantsServices{
         return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
         .map(response => response.json())
         .catch(ErrorHandler.handleError);
-        
     }
 }
 
