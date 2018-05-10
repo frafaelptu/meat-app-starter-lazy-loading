@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule} from '@angular/forms';
 import { ROUTES } from './app.routes';
 
 
@@ -19,6 +20,19 @@ import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shoppin
 import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.component';
  import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { ShoppingCartServices } from './restaurant-detail/shopping-cart/shopping-cart.services';
+import { OrderComponent } from './order/order.component';
+import { InputComponent } from './shared/input/input.component';
+import { RadioComponent } from './shared/radio/radio.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { OrderService } from './order/order.service';
+import { DeliveryCostsComponent } from './order/delivery-costs/delivery-costs.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { RatingComponent } from './shared/rating/rating.component';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -32,14 +46,22 @@ import { ShoppingCartServices } from './restaurant-detail/shopping-cart/shopping
     MenuComponent,
     ShoppingCartComponent,
     MenuItemComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    OrderComponent,
+    InputComponent,
+    RadioComponent,
+    OrderItemsComponent,
+    DeliveryCostsComponent,
+    OrderSummaryComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    FormsModule,
+    RouterModule.forRoot(ROUTES, { enableTracing: false } )
   ],
-  providers: [RestaurantsServices, ShoppingCartServices, {provide: LOCALE_ID, useValue: 'pt-BR'}],
+  providers: [RestaurantsServices, ShoppingCartServices, OrderService, {provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
